@@ -3,10 +3,15 @@ import { useSpring, animated } from 'react-spring';
 import logo from './logo.svg';
 import './App.css';
 
+import Toggle from './Toggle';
+
 const App = () => {
   // You can take the 'to' values out to the top-level
   // and react-spring will understand that it's the 'to' value.
   const fade = useSpring({ from: { opacity: 0 }, opacity: 1 });
+
+  // 'from' represents the state before mounting
+  // 'to' represents the state after mounting
 
   return (
     // animated will take the animation out of the react
@@ -16,6 +21,9 @@ const App = () => {
         <img src={logo} className="logo" alt="logo" />
         <button className="menu-button">Menu</button>
       </header>
+      <main>
+        <Toggle />
+      </main>
     </animated.div>
   );
 };
