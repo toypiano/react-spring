@@ -12,7 +12,7 @@ const Toggle = () => {
   const { color, y } = useSpring({
     // opacity: isToggled ? 1 : 0,
     color: isToggled ? '#000' : 'green', // can use any values
-    y: isToggled ? 0 : -50, // we can re-use this 'y' value in different places
+    y: isToggled ? 1 : 0, // when using 'range/output', this has to be either 0 or 1;
   });
 
   return (
@@ -21,7 +21,12 @@ const Toggle = () => {
         style={{
           color,
           // View interpolation can be a little faster & take up less space
-          transform: y.interpolate((y) => `translate3d(0, ${y}px, 0)`),
+          transform: y
+            .interpolate({
+              range: [0, 0.25, 0.5, 0.75, 1], // keyframe %
+              output: [0, -25, -50, -100, -50], // output value
+            })
+            .interpolate((y) => `translate3d(0, ${y}px, 0)`),
         }}
       >
         Hello
