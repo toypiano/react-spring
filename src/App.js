@@ -3,18 +3,12 @@ import { useSpring, animated } from 'react-spring';
 import logo from './logo.svg';
 import './App.css';
 
-import Toggle from './Toggle';
-import Nav from './Nav';
 import Checkout from './Checkout';
+import Routes from './Routes';
 
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const navAnimation = useSpring({
-    transform: isNavOpen
-      ? `translate3d(0,0,0) scale(1)`
-      : // menu will appear from the top-left corner
-        `translate3d(-100%,-100%,0) scale(0.6)`,
-  });
+
   // You can take the 'to' values out to the top-level
   // and react-spring will understand that it's the 'to' value.
   const fade = useSpring({ from: { opacity: 0 }, opacity: 1 });
@@ -37,9 +31,9 @@ const App = () => {
         {/* <Nav style={navAnimation} /> */}
       </header>
       <main>
-        <Toggle />
-        <Checkout isOpen={isNavOpen} />
+        <Routes />
       </main>
+      <Checkout isOpen={isNavOpen} />
     </animated.div>
   );
 };
