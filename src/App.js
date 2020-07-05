@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Checkout from './Checkout';
-import Routes from './Routes';
+import Modal from './Modal';
 
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -31,7 +31,7 @@ const App = () => {
         {/* <Nav style={navAnimation} /> */}
       </header>
       <main>
-        <Routes />
+        <Modal />
       </main>
       <Checkout isOpen={isNavOpen} />
     </animated.div>
