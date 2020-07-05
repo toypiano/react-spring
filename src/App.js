@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import logo from './logo.svg';
 import './App.css';
-
 import Checkout from './Checkout';
 import Modal from './Modal';
 import Accordion from './Accordion';
+import Waypoints from './Waypoints';
 
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -34,6 +34,7 @@ const App = () => {
       <main>
         <Modal />
         <Accordion />
+        <Waypoints />
       </main>
       <Checkout isOpen={isNavOpen} />
     </animated.div>
