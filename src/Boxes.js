@@ -1,31 +1,19 @@
-import React from 'react';
-import { animated, useSprings } from 'react-spring';
-
-// Data points
-const items = [0, 1, 2, 3, 4];
+import React, { useState } from 'react';
+import { animated, useSprings, useTrail } from 'react-spring';
 
 const Boxes = () => {
-  const springs = useSprings(
-    items.length,
-    items.map((item) => ({
-      // You can still use the "common" API that you used with useSpring.
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-      // you can configure each item separately
-      config: {
-        tension: item * 170,
-        mass: item * 150,
-      },
-    }))
-  );
+  const [on, setOn] = useState(false);
+
+  // When you want to stagger your animation
+  const trail = useTrail(5, {
+    opacity: on ? 0 : 1,
+    transform: on ? 'scale(0.3)' : 'scale(1)',
+  });
 
   return (
     <div className="boxes-grid">
-      {springs.map((animation) => (
+      <button onClick={() => setOn(!on)}>TOGGLE</button>
+      {trail.map((animation) => (
         <animated.div className="box" style={animation}></animated.div>
       ))}
     </div>
